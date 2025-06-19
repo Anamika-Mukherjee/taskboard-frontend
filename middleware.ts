@@ -1,42 +1,33 @@
-//Middleware to protect User routes
-import {NextResponse} from "next/server";
-import type {NextRequest} from "next/server";
-import { checkTokenApi } from "./services/auth/checkToken";
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+import { jwtVerify } from "jose";
 
-export async function middleware(req: NextRequest){
-  const {pathname} = req.nextUrl;
+const SECRET = new TextEncoder().encode(process.env.NEXT_PUBLIC_JWT_SECRET);
 
-  try{
-    if(pathname.startsWith("/user")){
-            const accessToken = req.cookies.get("accessToken")?.value;
-            const refreshToken = req.cookies.get("refreshToken")?.value;
+export async function middleware(req: NextRequest) {
+  const { pathname } = req.nextUrl;
 
-            if(accessToken && refreshToken){
-                const response = await checkTokenApi(accessToken, refreshToken);
-                const responseData = await response.json();
+  if (pathname.startsWith("/user")) {
+    try {
+      const accessToken = req.cookies.get("accessToken")?.value;
 
-                if(!response.ok){
-                  throw new Error(responseData.message);
-                }
-                if(responseData.userDetails){
-                    return NextResponse.next();
-                }
-                else{
-                  throw new Error("Could not authenticate user");
-                }
-            }
-            else{
-              throw new Error("Token not available");
-            }
+      if (!accessToken) {
+        throw new Error("No token");
+      }
+
+      // ✅ Verify access token directly (no fetch)
+      await jwtVerify(accessToken, SECRET);
+
+      return NextResponse.next();
+    } catch (err) {
+      console.error("JWT Verification failed", err);
+      return NextResponse.redirect(new URL("/", req.url));
     }
-    return NextResponse.next();
   }
-  catch(err){
-    console.log(err);
-    return NextResponse.redirect(`${process.env.NEXT_PUBLIC_FRONTEND_URL}`);
-  }
+
+  return NextResponse.next();
 }
 
 export const config = {
-    matcher: ["/user/:path*"]
-}
+  matcher: ["/user/:path*"]
+};
