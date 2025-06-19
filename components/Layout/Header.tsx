@@ -12,13 +12,16 @@ import MobileProjectSidebar from "./MobileProjectSidebar";
 import { sidebarLinks } from "@/utils/constants";
 import { toast } from "sonner";
 import MobileCollabSidebar from "./MobileCollabSidebar";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
+    const router = useRouter();
     const pathname = usePathname();
     const pathArray = pathname.split("/");
     const pathEnd = pathArray[pathArray.length-1];
     const [userData, setUserData] = useState<UserDetails | undefined>();
     const [openMenu, setOpenMenu] = useState<boolean>(false);
+    const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
     const sidebarUrls = sidebarLinks.map((item)=>item.url);
     
@@ -46,9 +49,21 @@ const Header = () => {
                            :"Could not check authentication";
             toast.error(errorMessage);
            }
+           finally{
+            setIsLoaded(true)
+           }
         };
         checkSignedIn();
-    }, []);
+    }, [router, setUserData]);
+
+    useEffect(()=>{
+        if(isLoaded){
+            if(!userData){
+                console.log("no user data")
+                router.push("/");
+            }
+        }
+    }, [userData, isLoaded]);
 
     return (
         <>

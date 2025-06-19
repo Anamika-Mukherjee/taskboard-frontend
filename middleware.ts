@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-// import { jwtVerify } from "jose";
-
-// const SECRET = new TextEncoder().encode(process.env.NEXT_PUBLIC_JWT_SECRET);
+import { checkTokenApi } from "./services/auth/checkToken";
 
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
@@ -15,11 +13,9 @@ export async function middleware(req: NextRequest) {
         throw new Error("No cookies");
       }
 
-      // ✅ Verify access token directly (no fetch)
-      // await jwtVerify(accessToken, SECRET);
-
       return NextResponse.next();
-    } catch (err) {
+    } 
+    catch (err) {
       console.error("No cookie found", err);
       return NextResponse.redirect(new URL("/", req.url));
     }
