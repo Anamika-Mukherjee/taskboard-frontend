@@ -59,7 +59,7 @@ const Header = () => {
     useEffect(()=>{
         if(isLoaded){
             if(!userData){
-                console.log("no user data")
+                console.log("Token not verified");
                 router.push("/");
             }
         }

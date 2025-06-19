@@ -12,7 +12,6 @@ export async function middleware(req: NextRequest) {
         throw new Error("No cookies");
       }
 
-      console.log("cookies: ", cookies);
       return NextResponse.next();
     } 
     catch (err) {
