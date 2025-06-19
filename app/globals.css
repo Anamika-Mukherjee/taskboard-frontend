@@ -1,26 +1,66 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #000000;
+  --font-family: var(--font-schibsted), sans-serif;
+  --color-black: #000000;
+  --scheme: #b409cf;
+  --scheme-dark: #8600D8;
+  --scheme-gradient: linear-gradient(90deg, rgb(160 8 184), rgb(181 68 250), rgb(134 0 216), rgb(181 68 250), rgb(160 8 184));
+  --scheme-gradient-hover: linear-gradient(90deg, rgb(136 8 156), rgb(171 64 236), rgb(117 2 187), rgb(171 64 236), rgb(136 8 156));
+  --scheme-gradient-light: linear-gradient(90deg, rgb(136 8 156 /30%), rgb(171 64 236/20%), rgb(117 2 187/20%), rgb(171 64 236 /20%), rgb(136 8 156 /20%));
+  --secondary-gradient-light: linear-gradient(90deg, rgb(80 180 245 /30%), rgb(114 194 245/20%), rgb(142 205 245/20%), rgb(114 194 245 /20%), rgb(80 180 245 /20%));
+  --third-gradient-light: linear-gradient(90deg, rgb(238 238 56 /30%), rgb(238 238 104/20%), rgb(236 236 137/20%), rgb(238 238 104 /20%), rgb(240 240 56 /20%));
+  --fourth-gradient-light: linear-gradient(90deg, rgb(249 148 47 /30%), rgb(249 170 90/20%), rgb(249 189 130/20%), rgb(249 170 90 /20%), rgb(249 148 47 /20%));
+  --fifth-gradient-light: linear-gradient(90deg, rgb(50 250 159 /30%), rgb(102 251 183/20%), rgb(160 252 210 /20%), rgb(102 251 183 /20%), rgb(50 250 159 /20%));
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-black);
+  font-family: var(--font-schibsted);
+}
+
+.scheme-background{
+  background: var(--scheme);
+}
+
+.scheme-color{
+  color: var(--scheme);
+}
+
+.scheme-background:hover{
+     background: var(--scheme-dark);
+}
+
+.scheme-color:hover{
+  color: var(--scheme-dark);
+}
+
+.scheme-gradient{
+  background-image: var(--scheme-gradient);
+}
+
+.scheme-gradient:hover{
+  background-image: var(--scheme-gradient-hover);
+}
+
+.scheme-gradient-light{
+  background-image: var(--scheme-gradient-light);
+}
+.secondary-gradient-light{
+  background-image: var(--secondary-gradient-light);
+}
+.third-gradient-light{
+  background-image: var(--third-gradient-light);
+}
+.fourth-gradient-light{
+  background-image: var(--fourth-gradient-light);
+}
+.fifth-gradient-light{
+  background-image: var(--fifth-gradient-light);
+}
+
+.hide-scrollbar{
+  scrollbar-width: none;
 }
