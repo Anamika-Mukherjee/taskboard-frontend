@@ -9,18 +9,18 @@ export async function middleware(req: NextRequest) {
 
   if (pathname.startsWith("/user")) {
     try {
-      const accessToken = req.cookies.get("accessToken")?.value;
+      const cookies = req.cookies;
 
-      if (!accessToken) {
-        throw new Error("No token");
+      if (!cookies) {
+        throw new Error("No cookies");
       }
 
       // ✅ Verify access token directly (no fetch)
-      await jwtVerify(accessToken, SECRET);
+      // await jwtVerify(accessToken, SECRET);
 
       return NextResponse.next();
     } catch (err) {
-      console.error("JWT Verification failed", err);
+      console.error("No cookie found", err);
       return NextResponse.redirect(new URL("/", req.url));
     }
   }
