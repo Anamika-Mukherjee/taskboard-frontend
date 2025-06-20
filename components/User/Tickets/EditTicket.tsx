@@ -333,7 +333,7 @@ const EditTicket: React.FC<EditTicketProps> = ({ticketDetails, setTicketDetails,
                                 </p>    
                             </div>
                             {/* Ticket Description */}
-                            <div className="w-[100%] h-[120px] flex flex-col justify-between items-start md:flex-row md:justify-start md:items-center px-[10px]">
+                            <div className="w-[100%] min-h-[120px] h-auto flex flex-col justify-between items-start md:flex-row md:justify-start md:items-center px-[10px]">
                                 <p className="w-full h-[30px] flex flex-col justify-center items-start font-medium cursor-pointer">
                                     Ticket Description
                                 </p>
