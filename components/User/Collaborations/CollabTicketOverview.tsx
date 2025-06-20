@@ -79,11 +79,11 @@ const CollabTicketOverview = () => {
                                             </p>    
                                         </div>
                                         {/* Ticket Description */}
-                                        <div className="w-[100%] h-[120px] flex flex-col justify-between items-start md:flex-row md:justify-start md:items-center px-[10px]">
+                                        <div className="w-[100%] min-h-[120px] h-auto flex flex-col justify-between items-start md:flex-row md:justify-start md:items-center px-[10px]">
                                             <p className="w-full h-[30px] flex flex-col justify-center items-start font-medium cursor-pointer">
                                                 Ticket Description
                                             </p>
-                                            <p className="w-full h-[80px] flex justify-start items-center border border-gray-300 rounded-md text-sm px-[6px] bg-gray-200">
+                                            <p className="w-full min-h-[80px] h-auto flex justify-start items-center border border-gray-300 rounded-md text-sm px-[6px] py-[10px] bg-gray-200">
                                                 {ticketDetails ? ticketDetails.ticketDescription :""}
                                             </p>
                                         </div>
