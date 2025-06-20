@@ -68,8 +68,8 @@ const CollabOverview = () => {
  
     if(loading){
         return (
-        <div className="w-[100%] md:w-[90%] h-[calc(100%-45px)] flex justify-center items-start z-0">
-            <div className="w-[80%] h-[90%] bg-white rounded-[10px] flex flex-col justify-center items-center py-[20px] px-[30px] space-y-6 z-0 relative">
+        <div className="w-[100%] md:w-[90%] h-[calc(100%-45px)] flex justify-center items-start">
+            <div className="w-[80%] h-[100%] bg-white rounded-[10px] flex justify-center items-center py-[20px] px-[30px]z-0 relative">
                 <FadeLoader color="#8600D8" width={2} height={10} />
             </div>
         </div>
