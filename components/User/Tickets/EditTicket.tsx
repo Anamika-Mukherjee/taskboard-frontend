@@ -337,7 +337,7 @@ const EditTicket: React.FC<EditTicketProps> = ({ticketDetails, setTicketDetails,
                                 <p className="w-full h-[30px] flex flex-col justify-center items-start font-medium cursor-pointer">
                                     Ticket Description
                                 </p>
-                                <p className="w-full min-h-[80px] h-auto flex justify-start items-center border border-gray-300 rounded-md text-sm px-[6px] bg-gray-200">
+                                <p className="w-full min-h-[80px] h-auto flex justify-start items-center border border-gray-300 rounded-md text-sm px-[6px] py-[10px] bg-gray-200">
                                     {ticketDetails ? ticketDetails.ticketDescription :""}
                                 </p>
                             </div>
