@@ -67,25 +67,25 @@ const ProjectCard: React.FC<ProjectCardProps> = ({project}) => {
                         className={`w-[15px] h-[15px] ${statusColor}`}
                       /> 
                   ):project.status === "In Progress" ? (
-                    <Icon
-                        icon={"carbon:in-progress"}
-                        className={`w-[15px] h-[15px] ${statusColor}`}
+                      <Icon
+                          icon={"carbon:in-progress"}
+                          className={`w-[15px] h-[15px] ${statusColor}`}
                       /> 
                   ):project.status === "Completed" ? (
-                    <Icon
-                        icon={"nrk:check-active"}
-                        className={`w-[15px] h-[15px] ${statusColor}`}
+                      <Icon
+                          icon={"nrk:check-active"}
+                          className={`w-[15px] h-[15px] ${statusColor}`}
                       /> 
                   )
                   :project.status === "On Hold"? (
-                    <Icon
-                        icon={"zondicons:pause-solid"}
-                        className={`w-[15px] h-[15px] ${statusColor}`}
+                      <Icon
+                          icon={"zondicons:pause-solid"}
+                          className={`w-[15px] h-[15px] ${statusColor}`}
                       /> 
                   ):project.status === "Cancelled" ?(
-                    <Icon
-                        icon={"ic:baseline-cancel"}
-                        className={`w-[15px] h-[15px] ${statusColor}`}
+                      <Icon
+                          icon={"ic:baseline-cancel"}
+                          className={`w-[15px] h-[15px] ${statusColor}`}
                       /> 
                   ): null
                   }

@@ -34,6 +34,17 @@ const ProjectOverview = () => {
     const [showMembers, setShowMembers] = useState<boolean>(false);
     const [showTickets, setShowTickets] = useState<boolean>(false);
 
+    //Define text colors for different project status values
+    const statusColor = projectDetails.status === "Not Started"
+                      ?"text-blue-500"
+                      :projectDetails.status === "In Progress"
+                      ?"text-yellow-500"
+                      :projectDetails.status === "Completed"
+                      ?"text-green-500"
+                      :projectDetails.status === "On Hold"
+                      ?"text-[#88089c]"
+                      :"text-red-500"
+
     //Fetch given project's details from backend through projectId
     useEffect(()=>{
         const fetchProjectDetails = async () =>{
@@ -80,9 +91,50 @@ const ProjectOverview = () => {
         <div className="w-[100%] md:w-[90%] h-[calc(100%-45px)] flex justify-center items-start z-0">
             {/* Project Overview Container */}
             <div className="w-[80%] h-[100%] bg-white rounded-[10px] flex flex-col justify-start items-center py-[20px] px-[30px] space-y-6 z-0 relative">
-                {/* Heading - Project Name*/}
-                <div className="w-full h-[40px] flex justify-center items-center">
-                    <h1 className="text-2xl font-semibold">{projectDetails.projectName}</h1>
+                {/* Heading and Project Status*/}
+                <div className="w-[100%] h-[80px] flex flex-col justify-between items-center">
+                    {/* Heading - Project Name*/}
+                    <div className="w-[100%] h-[40px] flex justify-center items-center">
+                        <h1 className="w-[100%] h-[100%] flex justify-center items-center text-2xl font-semibold">
+                            {projectDetails.projectName}
+                        </h1>
+                    </div>
+                    {/* Project Status*/}
+                    <div className="w-[100%] h-[20px] flex justify-end items-center">
+                        <div className="w-auto h-[100%] flex jusify-center items-center space-x-2">
+                            <div className="w-[20px] h-full flex justify-end items-center">
+                                {projectDetails.status === "Not Started"? (
+                                <Icon
+                                    icon={"ic:baseline-pending"}
+                                    className={`w-[15px] h-[15px] ${statusColor}`}
+                                /> 
+                                ): projectDetails.status === "In Progress"? (
+                                    <Icon
+                                        icon={"carbon:in-progress"}
+                                        className={`w-[15px] h-[15px] ${statusColor}`}
+                                    /> 
+                                ): projectDetails.status === "Completed"? (
+                                    <Icon
+                                        icon={"nrk:check-active"}
+                                        className={`w-[15px] h-[15px] ${statusColor}`}
+                                    /> 
+                                ):  projectDetails.status === "On Hold" ? (
+                                    <Icon
+                                        icon={"zondicons:pause-solid"}
+                                        className={`w-[15px] h-[15px] ${statusColor}`}
+                                    /> 
+                                ): projectDetails.status === "Cancelled"? (
+                                    <Icon
+                                        icon={"ic:baseline-cancel"}
+                                        className={`w-[15px] h-[15px] ${statusColor}`}
+                                    /> 
+                                ): null}
+                            </div>
+                            <div className="w-auto h-full flex justify-end items-center">
+                                <p className={`w-full h-full flex justify-end items-center text-sm font-semibold ${statusColor}`}>{projectDetails.status}</p>
+                            </div>
+                        </div>
+                    </div>   
                 </div>
 
                 {/* Project Details Container (Scrollable)*/}
