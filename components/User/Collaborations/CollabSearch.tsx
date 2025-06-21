@@ -84,7 +84,7 @@ const CollabSearch = () => {
                             // Individual Search Result is a link to its Search Result Page 
                             <Link
                             key={index} 
-                            href={`collabs?query=${project._id}`}
+                            href={`collaborations?query=${project._id}`}
                             onClick={()=>{
                                 setSearchTerm("");
                                 setResults([]);
