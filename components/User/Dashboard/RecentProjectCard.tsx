@@ -60,7 +60,7 @@ const RecentProjectCard: React.FC<RecentProjectCardProps> = ({projects}) => {
             </Link>
     ):(
             // Render normal container element if recent project not available
-            <div className="w-[80%] md:w-[25%] h-[80%] md:h-[75%] flex flex-col justify-start items-start secondary-gradient-light rounded-[10px] px-[20px] py-[20px] cursor-pointer outline-2 -outline-offset-4 outline-white">
+            <div className="w-[80%] md:w-[25%] h-[80%] md:h-[85%] flex flex-col justify-start items-start secondary-gradient-light rounded-[10px] px-[20px] py-[20px] outline-2 -outline-offset-4 outline-white">
                 <div className="w-full h-[30%] flex justify-end items-start">
                     <div className="w-[35px] h-[35px] flex justify-center items-center bg-gray-200 rounded-[20px] relative -top-[10px] left-[10px]">
                         <Icon
